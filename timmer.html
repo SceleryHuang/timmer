@@ -1,0 +1,51 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timmer</title>
+    <style>
+        body{
+            background-color:black;
+            color: white;
+            font-size: 50px;
+
+        }
+    </style>
+    <script>
+            function toDou(num){
+                if(num<10){
+                    return '0'+num;
+                }else{
+                    return ''+num;
+                }
+            }
+            window.onload= function () {
+                //var str ='123456';
+                function tick() {
+                    var date = new Date();
+                    var time = toDou(date.getHours())+toDou(date.getMinutes())+toDou(date.getSeconds());
+                    //alert(time);
+                    var img = document.getElementsByTagName("img");
+
+                    for(var i = 0;i<=time.length;i++){
+                        img[i].src = 'images/'+time[i]+'.png'
+                    }
+                }
+               setInterval(tick,1000);
+                tick();
+            }
+    </script>
+
+</head>
+<body>
+<img src="images/0.png"/>
+<img src="images/0.png"/>
+:
+<img src="images/0.png"/>
+<img src="images/0.png"/>
+:
+<img src="images/0.png"/>
+<img src="images/0.png"/>
+
+</body>
+</html>
