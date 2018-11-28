@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+        #div1 {
+            width:712px;
+            height:108px;
+            margin:100px auto;
+            position:relative;
+            background:red;
+            overflow:hidden;
+        }
+        #div1 ul {
+            position:absolute;
+            left:0;
+            top:0;
+        }
+        #div1 ul li {
+            float:left;
+            width:178px;
+            height:108px;
+            list-style:none;
+        }
+    </style>
+    <script>
+        window.onload= function () {
+            var iDiv = document.getElementById('div1');
+            var oUl = document.getElementsByTagName('ul')[0];
+            var oLi = oUl.getElementsByTagName('li');
+            var oBtn = document.getElementsByTagName('input');
+
+            oUl.innerHTML = oUl.innerHTML +oUl.innerHTML;
+            oUl.style.width = oLi[0].offsetWidth * oLi.length+'px';
+            var speed = 2;
+
+
+            function move () {
+                if(oUl.offsetLeft<-oUl.offsetWidth/2){
+                    oUl.style.left  = '0';
+                }
+                if(oUl.offsetLeft>0)
+                {
+                    oUl.style.left=-oUl.offsetWidth/2+'px';
+                }
+
+                oUl.style.left  = oUl.offsetLeft+speed+'px';
+            }
+
+            var timer = setInterval(move,30);
+
+            iDiv.onmouseover = function () {
+                clearInterval(timer);
+            };
+            iDiv.onmouseout = function () {
+                timer = setInterval(move,30);
+            };
+            oBtn[0].onclick = function () {
+                speed = -2
+            };
+            oBtn[1].onclick = function () {
+                speed = 2
+            }
+
+        };
+
+    </script>
+</head>
+<body>
+<div id = 'div1'>
+    <ul>
+        <li><img src="img2/1.jpg" /></li>
+        <li><img src="img2/2.jpg" /></li>
+        <li><img src="img2/3.jpg" /></li>
+        <li><img src="img2/4.jpg" /></li>
+    </ul>
+
+</div>
+<input type="button" value="向左">
+<input type="button" value="向右">
+</body>
+</html>
